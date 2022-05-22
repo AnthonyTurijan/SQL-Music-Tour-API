@@ -1,7 +1,6 @@
 //DEPENDENCIES
 const bands = require('express').Router()
 const db = require('../models')
-const band = require('../models/band')
 const { Band } = db
 const { Op } = require('sequelize')
 
