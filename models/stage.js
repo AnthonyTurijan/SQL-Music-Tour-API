@@ -3,21 +3,21 @@ const {
   Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class stage extends Model {
-    static associate({Event, stage_events, set_times}) {
-      stage.belongsToMany(Event,{
+  class Stage extends Model {
+    static associate({Event, StageEvents, SetTime}) {
+      Stage.belongsToMany(Event,{
         foreignKey: 'stage_id',
         as: 'events',
-        through: stage_events
+        through: StageEvents
       })
       //set times
-      stage.hasMany(set_times,{
+      Stage.hasMany(SetTime,{
         foreignKey: 'stage_id',
         as: 'set_times'
       })
     }
   }
-  stage.init({
+  Stage.init({
     stage_id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
@@ -32,5 +32,5 @@ module.exports = (sequelize, DataTypes) => {
     tableName: 'stages',
     timestamps: false
   });
-  return stage;
+  return Stage;
 };
